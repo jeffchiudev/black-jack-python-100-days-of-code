@@ -14,9 +14,20 @@ user_cards.append(deal_card())
 dealer_cards.append(deal_card())
 dealer_cards.append(deal_card())
 
+def calc_score(cards):
+  score = sum(cards)
+  if score == 21 and len(cards) == 2:
+    return 0
+  if 11 in cards and score > 21:
+    cards.remove(11)
+    cards.append(1)
+  return score
 
 print(user_cards)
 print(dealer_cards)
+
+print(calc_score(user_cards))
+print(calc_score(dealer_cards))
 ############### Our Blackjack House Rules #####################
 
 ## The deck is unlimited in size. 
