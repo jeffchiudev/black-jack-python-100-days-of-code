@@ -1,33 +1,6 @@
 from art import logo
 import random
 
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-user_cards = []
-dealer_cards = []
-
-def deal_card():
-  dealt_card = random.choice(cards)
-  return dealt_card
-
-user_cards.append(deal_card())
-user_cards.append(deal_card())
-dealer_cards.append(deal_card())
-dealer_cards.append(deal_card())
-
-def calc_score(cards):
-  score = sum(cards)
-  if score == 21 and len(cards) == 2:
-    return 0
-  if 11 in cards and score > 21:
-    cards.remove(11)
-    cards.append(1)
-  return score
-
-print(user_cards)
-print(dealer_cards)
-
-print(calc_score(user_cards))
-print(calc_score(dealer_cards))
 ############### Our Blackjack House Rules #####################
 
 ## The deck is unlimited in size. 
@@ -43,18 +16,43 @@ print(calc_score(dealer_cards))
 #Hint 4: Create a deal_card() function that uses the List below to *return* a random card.
 #11 is the Ace.
 #cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+def deal_card():
+  """Returns random card from deck."""
+  cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+  dealt_card = random.choice(cards)
+  return dealt_card
 
 #Hint 5: Deal the user and computer 2 cards each using deal_card() and append().
-#user_cards = []
-#computer_cards = []
+user_cards = []
+dealer_cards = []
+
+for _ in range(2):
+  user_cards.append(deal_card())
+  dealer_cards.append(deal_card())
+
+print(user_cards)
+print(dealer_cards)
 
 #Hint 6: Create a function called calculate_score() that takes a List of cards as input 
 #and returns the score. 
 #Look up the sum() function to help you do this.
+def calc_score(cards):
+  #Hint 7: Inside calculate_score() check for a blackjack (a hand with only 2 cards: ace + 10) and return 0 instead of the actual score. 0 will represent a blackjack in our game.
+  if sum(cards) == 21 and len(cards) ==2:
+    return 0
+  
+  #Hint 8: Inside calculate_score() check for an 11 (ace). If the score is already over 21, remove the 11 and replace it with a 1. You might need to look up append() and remove().
 
-#Hint 7: Inside calculate_score() check for a blackjack (a hand with only 2 cards: ace + 10) and return 0 instead of the actual score. 0 will represent a blackjack in our game.
+  if 11 in cards and sum(cards) > 21:
+    cards.remove(11)
+    cards.append(1)
 
-#Hint 8: Inside calculate_score() check for an 11 (ace). If the score is already over 21, remove the 11 and replace it with a 1. You might need to look up append() and remove().
+  return sum(cards)
+
+print(calc_score(user_cards))
+print(calc_score(dealer_cards))
+
+
 
 #Hint 9: Call calculate_score(). If the computer or the user has a blackjack (0) or if the user's score is over 21, then the game ends.
 
