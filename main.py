@@ -57,9 +57,15 @@ print(f"   Dealer's first card: {dealer_cards[0]}")
 
 if user_score == 0 or dealer_score == 0 or user_score > 21:
   game_over = True
+else: 
+  #Hint 10: If the game has not ended, ask the user if they want to draw another card. If yes, then use the deal_card() function to add another card to the user_cards List. If no, then the game has ended.
+  user_should_deal = input("Type 'y' to get another card, type 'n' to pass: ").lower()
+  if user_should_deal == "y":
+    user_cards.append(deal_card())
+  else:
+    game_over == True
 
 
-#Hint 10: If the game has not ended, ask the user if they want to draw another card. If yes, then use the deal_card() function to add another card to the user_cards List. If no, then the game has ended.
 
 #Hint 11: The score will need to be rechecked with every new card drawn and the checks in Hint 9 need to be repeated until the game ends.
 
