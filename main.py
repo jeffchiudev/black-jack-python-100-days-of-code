@@ -30,9 +30,6 @@ for _ in range(2):
   user_cards.append(deal_card())
   dealer_cards.append(deal_card())
 
-print(user_cards)
-print(dealer_cards)
-
 #Hint 6: Create a function called calculate_score() that takes a List of cards as input 
 #and returns the score. 
 #Look up the sum() function to help you do this.
@@ -49,10 +46,8 @@ def calc_score(cards):
 
   return sum(cards)
 
-print(calc_score(user_cards))
-print(calc_score(dealer_cards))
-
-
+user_score = calc_score(user_cards)
+dealer_score = calc_score(dealer_cards)
 
 #Hint 9: Call calculate_score(). If the computer or the user has a blackjack (0) or if the user's score is over 21, then the game ends.
 
