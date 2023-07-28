@@ -1,9 +1,9 @@
-FROM python:3
+FROM python:8-slim-buster
 
 WORKDIR /usr/src/app
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+# COPY requirements.txt ./
+# RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
